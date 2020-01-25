@@ -1,0 +1,26 @@
+branches:
+  only:
+    - master
+    - develop
+os: osx
+osx_image: xcode11.2
+language: node_js
+node_js: '10'
+cache: npm
+addons:
+  chrome: stable
+before_install:
+  - npm i -g npm@latest electron-rebuild electron-builder
+  - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
+script:
+  - npm start &
+  - npm run lint
+  - npm run test
+after_success:
+  - npm run app:build
+  - npm run app:pack # TODO change to app:publish if ready to publishing
+  - npm run storybook:build
+notifications:
+  email:
+    on_success: never
+    on_failure: always

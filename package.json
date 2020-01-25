@@ -1,0 +1,69 @@
+{
+  "private": true,
+  "scripts": {
+    "app:build": "zeroconfig-desktopapp-scripts build app",
+    "app:start": "zeroconfig-desktopapp-scripts start app",
+    "app:pack": "cd dist/app/electron && npm install && electron-rebuild && electron-builder --mac --win --linux --publish never",
+    "app:publish": "cd dist/app/electron && npm install && electron-rebuild && electron-builder --mac --win --linux --publish always",
+    "storybook:start": "start-storybook",
+    "storybook:build": "build-storybook",
+    "build": "npm run app:build && npm run app:pack",
+    "start": "npm run app:start",
+    "test": "jest --colors",
+    "lint": "eslint \"src/**/*.{js,jsx,mjs,ts,tsx}\" && tslint \"src/**/*.{ts,tsx}\"",
+    "postinstall": "electron-rebuild"
+  },
+  "jest": {
+    "preset": "react-zeroconfig"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "markdown-source-import \"{,!(node_modules)/**/}*.md\" --git-add && lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,mjs}": [
+      "eslint",
+      "jest --colors --findRelatedTests"
+    ],
+    "src/**/*.{ts,tsx}": [
+      "eslint",
+      "tslint",
+      "jest --colors --findRelatedTests"
+    ]
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "eslintIgnore": [
+    "src/**/public/*",
+    "src/**/*.d.ts"
+  ],
+  "dependencies": {
+    "electron-updater": "^4.2.0",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
+  },
+  "devDependencies": {
+    "@storybook/addon-storysource": "^5.3.9",
+    "@storybook/react": "^5.3.9",
+    "electron": "^7.1.10",
+    "electron-rebuild": "^1.9.0",
+    "@types/eslint": "^6.1.7",
+    "@types/jest": "^24.9.1",
+    "@types/puppeteer": "^2.0.0",
+    "@types/react": "^16.9.19",
+    "@types/react-dom": "^16.9.5",
+    "@types/webpack-env": "^1.15.0",
+    "eslint": "^6.8.0",
+    "eslint-config-react-app": "^5.1.0",
+    "husky": "^4.2.1",
+    "jest": "^25.1.0",
+    "lint-staged": "^10.0.2",
+    "markdown-source-import": "^1.3.1",
+    "puppeteer": "^2.0.0",
+    "react-zeroconfig": "^3.23.2",
+    "tslint": "^6.0.0",
+    "tslint-ssen-rules": "^1.3.0"
+  }
+}

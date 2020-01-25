@@ -1,0 +1,37 @@
+{
+  "name": "sample-electron-app",
+  "version": "0.1.0",
+  "author": {
+    "name": "Your Name",
+    "email": "your@email.com"
+  },
+  "description": "App Description",
+  "homepage": "https://homepage.com",
+  "build": {
+    "appId": "electron.sample",
+    "productName": "SampleApp",
+    "directories": {
+      "output": "../apps"
+    },
+    "publish": {
+      "provider": "github",
+      "owner": "owner",
+      "repo": "repo",
+      "private": false
+    },
+    "mac": {
+      "category": "public.app-category.healthcare-fitness"
+    },
+    "win": {
+      "target": "nsis"
+    },
+    "nsis": {
+      "perMachine": true
+    },
+    "linux": {
+      "target": [
+        "deb"
+      ]
+    }
+  }
+}
