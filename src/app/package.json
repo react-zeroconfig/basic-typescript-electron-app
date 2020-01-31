@@ -11,6 +11,7 @@
     "appId": "electron.sample",
     "productName": "SampleApp",
     "directories": {
+      "buildResources": "resources",
       "output": "../apps"
     },
     "publish": {
