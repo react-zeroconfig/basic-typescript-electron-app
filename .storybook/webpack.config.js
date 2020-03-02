@@ -8,7 +8,7 @@ module.exports = async ({config}) => {
       test: /\.stories\.(js|jsx)$/,
       loaders: [
         {
-          loader: require.resolve('@storybook/addon-storysource/loader'),
+          loader: require.resolve('@storybook/source-loader'),
           options: {parser: 'javascript'},
         },
       ],
@@ -18,7 +18,7 @@ module.exports = async ({config}) => {
       test: /\.stories\.(ts|tsx)$/,
       loaders: [
         {
-          loader: require.resolve('@storybook/addon-storysource/loader'),
+          loader: require.resolve('@storybook/source-loader'),
           options: {parser: 'typescript'},
         },
       ],
