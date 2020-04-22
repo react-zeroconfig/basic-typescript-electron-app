@@ -18,7 +18,8 @@
       "provider": "github",
       "owner": "owner",
       "repo": "repo",
-      "private": false
+      "private": false,
+      "releaseType": "release"
     },
     "mac": {
       "category": "public.app-category.healthcare-fitness"
